@@ -1,0 +1,6 @@
+
+Needed options within php.ini:
+
+register_globals = On
+; For Session Management, in further Releases this will be turned off, i promise :)
+
