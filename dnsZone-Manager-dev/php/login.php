@@ -29,15 +29,35 @@ if (isset($_POST['dologin']) && !Auth::checkAuth()) {
 	<link href="<?echo $conf['baseurl']?>/style/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body onload="inputfocus();">
+<body style="padding: 0px; margin: 0px;" onload="inputfocus();">
+<body style="padding: 0px; margin: 0px;">
+<table class="topbar">
+<tr>
+  <td align="left" valign="top" style="width: 300px;">
+    <span class="header">dnsZone Manager</span><br>
+    <span style="color: #FFFFFF">Version 0.1</span>
+  </td>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+
 <script language="JavaScript" type="text/javascript" src="<?echo $conf['baseurl']?>/scripts/general.js"></script>
 <form action="login.php" method="post" name="login">
 <input type="hidden" name="dologin" value="true">
 
-<table align="center" cellpadding="0" cellspacing="0" width="319" class="tablewithborder">
+<table align="center" cellpadding="0" cellspacing="0" width="400">
+<tr>
+<td>
+<fieldset><legend>Login</legend>
+<table align="center" cellpadding="0" cellspacing="0" width="319">
+<!--
 <tr>
 	<td align="center" colspan="2"><img src="<?echo $conf['baseurl']?>/style/images/login_header.jpg" alt=""></td>
 </tr>
+-->
 <? if ( $_GET['login_err'] == 1) { ?>
   <tr><td>&nbsp;</td></tr>
   <tr>
@@ -66,6 +86,23 @@ if (isset($_POST['dologin']) && !Auth::checkAuth()) {
 </tr>
 </table>
 </form>
+</fieldset>
+</td>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table class="bottombar">
+<tr>
+  <td align="left">&copy; 2004, Tim Weippert</td>
+  <td align="right"><a href="license.php" class="bottommenuitem">License</a> <a href="credits.php" class="bottommenuitem">Credits</a></td>
+</tr>
+</table>
 </body>
 </html>
 <?}?>
