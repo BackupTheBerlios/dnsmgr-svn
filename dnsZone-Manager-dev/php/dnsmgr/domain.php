@@ -23,11 +23,37 @@ if ( $conf['debug'] == 1 ) {
 global $conf;
 global $applications;
 
+// Get DN for Save, Add and Delete below
+$dn = LDAP_functions::get_domain_attr_dn($_GET['domain'], '@'); 
+
 // Look for Additional $_POST Parameters
 if ( $_POST['ADD_NEW_NS'] ) {
   // Add a NEW NS
-
+  LDAP_functions::modify_attribute($_POST['NEW_NS'], $dn, 'add', 'nSRecord');
 }
+if ( $_POST['SAVE_NS'] ) {
+  LDAP_functions::modify_attribute($_POST['OLD_NS'], $dn, 'del', 'nSRecord');
+  LDAP_functions::modify_attribute($_POST['NS'], $dn, 'add', 'nSRecord');
+}
+if ( $_POST['DELETE_NS'] ) {
+  // Remove NS ...
+  LDAP_functions::modify_attribute($_POST['NS'], $dn, 'del', 'nSRecord');
+}
+
+if ( $_POST['ADD_NEW_MX'] ) {
+  // Add a NEW MX
+  LDAP_functions::modify_attribute($_POST['NEW_MX'], $dn, 'add', 'mXRecord');
+}
+if ( $_POST['SAVE_MX'] ) {
+  LDAP_functions::modify_attribute($_POST['OLD_MX'], $dn, 'del', 'mXRecord');
+  LDAP_functions::modify_attribute($_POST['MX'], $dn, 'add', 'mXRecord');
+}
+
+if ( $_POST['DELETE_MX'] ) {
+  LDAP_functions::modify_attribute($_POST['MX'], $dn, 'del', 'mXRecord');
+}
+
+$dn = "";
 ?>
 
 <span class="menuheader">Domain: <?=$_GET['domain']?></span>
@@ -48,12 +74,13 @@ if (is_array($zone) && (count($zone) > 1)) {
 
   // Information to Form (SOA)
 ?>
-  <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="SOA">
   <p class="light">
     The SOA Entry of this Domain. <br>
     (Note: the serial can't be edited directly, it will be generated automatically!)
   </p>
-  <table align="left" cellpadding="0" cellspacing="0" width="700">
+  <table>
+  <tr><td>
+  <table align="left" cellpadding="0" cellspacing="0" width="700" border="0">
     <tr>
       <td class="light" width="100">IN SOA</td>
       <td align="left"><input type="text" size="40" tabindex="1" name="MNAME" value="<?=$soa['MNAME']?>"> </td>
@@ -62,45 +89,50 @@ if (is_array($zone) && (count($zone) > 1)) {
     <tr>
       <td class="light">&nbsp;</td>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" tabindex="1" name="SERIAL" value="<?=$soa['SERIAL']?>" style="background-color: darkgray" readonly >   ; Serial</td> 
+      <td class="light"><input type="text" tabindex="1" name="SERIAL" value="<?=$soa['SERIAL']?>" style="background-color: darkgray" readonly >   ; Serial</td> 
     </tr>
     <tr>
       <td class="light">&nbsp;</td>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" tabindex="1" name="REFRESH" value="<?=$soa['REFRESH']?>">   ; Refresh</td>
+      <td class="light"><input type="text" tabindex="1" name="REFRESH" value="<?=$soa['REFRESH']?>">   ; Refresh</td>
     </tr>
     <tr>
       <td class="light">&nbsp;</td>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" tabindex="1" name="RETRY" value="<?=$soa['RETRY']?>">   ; Retry</td>
+      <td class="light"><input type="text" tabindex="1" name="RETRY" value="<?=$soa['RETRY']?>">   ; Retry</td>
     </tr>
     <tr>
       <td class="light">&nbsp;</td>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" tabindex="1" name="EXPIRE" value="<?=$soa['EXPIRE']?>">   ; Expire</td>
+      <td class="light"><input type="text" tabindex="1" name="EXPIRE" value="<?=$soa['EXPIRE']?>">   ; Expire</td>
     </tr>
     <tr>
       <td class="light">&nbsp;</td>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" tabindex="1" name="MINIMUM" value="<?=$soa['MINIMUM']?>"> ) ; Minimum</td>
+      <td class="light"><input type="text" tabindex="1" name="MINIMUM" value="<?=$soa['MINIMUM']?>"> ) ; Minimum</td>
     </tr>
-  <!--
   </table>
-    Information of MX/NS and ARecord (Domain)
-  <table align="left" cellpadding="0" cellspacing="0" width="500">
-  -->
+  </td></tr>
+  <tr><td>
+    <p class="light">
+      <br/><br/>
+      The NS and MX Entries of this Domain.
+      <br/><br/>
+    </p>
+  </td></tr>
+  <tr><td>
+  <table align="left" cellpadding="0" cellspacing="0"  border="0">
    <? if ( is_array( $zone[0]['nsrecord'] ) ) { ?>
-          <tr>
-            <td class="light">&nbsp;</td>
-            <td class="light">&nbsp;</td>
-            <td class="light">&nbsp;</td>
-          </tr>
      <? foreach ( $zone[0]['nsrecord'] as $value ) { 
           if ( substr_count($value, '.') > 0 ) { ?>
           <tr>
-            <td class="light">IN NS</td>
-            <td class="light"><input type="text" size="40" tabindex="1" name="NS" value="<?=$value?>"></td>
-            <td class="light">&nbsp;</td>
+            <td class="light" style="width: 50px">IN NS</td>
+            <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="NS">
+	    		      <input type="hidden" name="OLD_NS" value="<?=$value?>">
+	                      <input type="text" size="40" tabindex="1" name="NS" value="<?=$value?>"></td>
+            <td class="light"><input type="image" name="SAVE_NS" value="Save" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save">
+	                      <input type="image" name="DELETE_NS" value="Delete" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete">
+			      </form></td>
           </tr>
    <?     }
         }
@@ -108,36 +140,38 @@ if (is_array($zone) && (count($zone) > 1)) {
    ?>
     <tr>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" size="40" tabindex="1" name="NEW_NS" value=""><input type="submit" name="ADD_NEW_NS" value="Add NS"></td>
-      <td class="light">&nbsp;</td>
+      <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="ADD_NS">
+      			<input type="text" size="40" tabindex="1" name="NEW_NS" value=""></td>
+      <td class="light"><input type="image" name="ADD_NEW_NS" value="Add NS" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add">
+			</form></td>
     </tr>
-  <!--
   </table>
-  <br><br>
-  <table align="left" cellpadding="0" cellspacing="0" width="500">
-  -->
-  <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { 
+  <!--</td></tr>
+  <tr><td>-->
+  <table align="right" cellpadding="0" cellspacing="0"border="0">
+  <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { ?>
+    <?
     // In an in-addr.arpa domain we don't need an MX and A entry
       if ( is_array( $zone[0]['mxrecord'] ) ) { ?>
-          <tr>
-            <td class="light">&nbsp;</td>
-            <td class="light">&nbsp;</td>
-            <td class="light">&nbsp;</td>
-          </tr>
      <? foreach ($zone[0]['mxrecord'] as $value) {
           if ( substr_count($value, '.') > 0 ) { ?>
           <tr>
-            <td class="light">IN MX</td>
-            <td class="light"><input type="text" size="40" tabindex="1" name="MX" value="<?=$value?>"></td>
-            <td class="light">&nbsp;</td>
+            <td class="light" style="width: 50px">IN MX</td>
+            <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="MX">
+	    		      <input type="hidden" name="OLD_MX" value="<?=$value?>">
+	                      <input type="text" size="40" tabindex="1" name="MX" value="<?=$value?>"></td>
+            <td class="light"><input type="image" name="SAVE_MX" value="Save" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save">
+	                      <input type="image" name="DELETE_MX" value="Delete" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete">
+			      </form></td>
           </tr>
    <?     }
         }
       } ?>
     <tr>
       <td class="light">&nbsp;</td>
-      <td class="light"<input type="text" size="40" tabindex="1" name="NEW_MX" value=""><input type="submit" name="ADD_NEW_MX" value="Add MX"></td>
-      <td class="light">&nbsp;</td>
+      <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="ADD_MX">
+      			<input type="text" size="40" tabindex="1" name="NEW_MX" value=""></td>
+      <td class="light"><input type="image" name="ADD_NEW_MX" value="Add MX" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add"></form></td>
     </tr>
 
   <? if ( $zone[0]['arecord'][0] ) { ?>
@@ -154,8 +188,9 @@ if (is_array($zone) && (count($zone) > 1)) {
   <?} ?>
   <?}?>
   </table>
+  </td></tr>
+  </table>
 
-  </form>
 <?
 }
 

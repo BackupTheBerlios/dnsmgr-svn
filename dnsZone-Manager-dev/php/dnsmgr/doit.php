@@ -24,7 +24,7 @@ global $applications;
 
 // use TreeMenu
 require_once(FRAMEWORK_BASE.'/lib/TreeMenu.php');
-$icon = 'folder.gif';
+$icon = 'stock_open16.gif';
 $level_count = 0;
 $menu  = new HTML_TreeMenu();
 $root = new HTML_TreeNode(array('text' => "dnsZone-Manager",
@@ -54,7 +54,7 @@ if (is_array($top_level) && (count($top_level) > 1)) {
 	    }
             $level[$level_count]->addItem( new HTML_TreeNode(array('text' => $domain['associateddomain'][0],
 	                                                           'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$domain['associateddomain'][0],
-      					                           'icon' => 'folder-expanded.gif')));
+      					                           'icon' => 'emblem_web16.gif')));
 	  }
 	}
       }
@@ -75,25 +75,25 @@ if (is_array($top_level) && (count($top_level) > 1)) {
     //$listBox  = &new HTML_TreeMenu_Listbox($menu, array('linkTarget' => '_self'));
 ?>
 
-<table border="0">
+<table border="0" width="100%">
 <tr>
   <td align="left" valign="top" width="250">
-    <div menu>
+<!--    <div>-->
       <?$treeMenu->printMenu()?>
       <!--
       <br/>
       <?//$listBox->printMenu()?>
       -->
-    </div>
+<!--    </div>-->
   </td>
   <td align="left" valign="top">
-    <div cont>
+<!--    <div>-->
       <? 
       if ( $_GET['domain'] ) {
         include APP_BASE."/dnsmgr/domain.php";
       } 
       ?> 
-    </div>
+<!--    </div>-->
   </td>
 </tr>
-</table
+</table>

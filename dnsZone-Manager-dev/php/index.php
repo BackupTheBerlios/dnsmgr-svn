@@ -58,8 +58,8 @@ $APP_NAME = 'dnsmgr';
         }
       }*/
       ?>
-        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem"><img src="<?echo $conf['images'];?>/icon_run.gif" border="0"><br>New Domain</a></p></td>
-        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/login.php?<?echo Session::getSID();?>" class="menuitem"><img src="<?echo $conf['images'];?>/exit_icon_24.gif" border="0"><br>Logoff</a></p></td>
+        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem"><img src="<?echo $conf['images'];?>/emblem_web36.gif" border="0"><br>New Domain</a></p></td>
+        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/login.php?<?echo Session::getSID();?>" class="menuitem"><img src="<?echo $conf['images'];?>/stock_quit36.gif" border="0"><br>Logoff</a></p></td>
       </tr>
     </table>
   </td>
