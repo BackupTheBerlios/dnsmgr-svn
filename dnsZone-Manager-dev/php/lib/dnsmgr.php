@@ -10,6 +10,8 @@
 * @license	GPL
 */
 
+/**
+*/
 include_once FRAMEWORK_BASE . '/config/mainconfig.php';
 
 /**

@@ -1,12 +1,20 @@
 <?php
 
 /**
-* @package	DNSMGR
-* @author	Tim Weippert <weiti@topf-sicret.org>
+* basic.php Holds basic functions like Errorhandling, etc.
+*
+* @package      DNSMGR
+* @author       Tim Weippert <weiti@topf-sicret.org>
+* @version      dnsZone-Manager 0.1
+* @copyright    Tim Weippert, 2004
+* @license      GPL
 */
 
-include_once FRAMEWORK_BASE . '/config/mainconfig.php';
-
+/**
+* Basic Class
+*
+* @package	DNSMGR
+*/
 class Basic {
 	function getErrorMessage($error) 
 	{
@@ -20,7 +28,7 @@ class Basic {
      *
      * @access public
      *
-     * @param integer $error  			Error number which is assigned to a text in errors.php.
+     * @param integer $error  		Error number which is assigned to a text in errors.php.
      * @param integer $file             The file in which the error occured.
      * @param integer $line             The line on which the error occured.
      * @param optional boolean $log     Log this message via Horde::logMesage()?
@@ -62,20 +70,3 @@ HTML;
     }
 }
 
-class Menu {
-	function buildAppMenu($app)
-	{
-		global $appmenu, $conf;
-		foreach (array_keys($appmenu[$app]) as $item) {
-			if ($appmenu[$app][$item]['status'] == 'active') {
-				if ($appmenu[$app][$item]['type'] == 'link') {
-					echo "<tr><td>&nbsp;</td>";
-					echo "<td><img src=\"".$conf['images']."/".$appmenu[$app][$item]['icon']."\" border=\"0\">&nbsp;<a href=\"index.php?".Session::getSID()."&view=".$appmenu[$app][$item]['template']."\" class=\"submenuitem\">".$appmenu[$app][$item]['name']."</a></td></tr>";
-				} else if ($appmenu[$app][$item]['type'] == 'spacer') {
-					echo "<tr><td colspan=\"2\"><br style=\"font-size:2pt;\"></td></tr>";
-				}
-			}
-		};
-	}
-}
-?>

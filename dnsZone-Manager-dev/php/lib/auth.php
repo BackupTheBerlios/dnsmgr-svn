@@ -1,8 +1,19 @@
 <?php
 
 /**
-* @package	DNSMGR
-* @author	Tim Weippert <weiti@topf-sicret.org>
+* auth.php Holds Authentication Classes for DNSMGR 
+*
+* @package      DNSMGR
+* @author       Tim Weippert <weiti@topf-sicret.org>
+* @version      dnsZone-Manager 0.1
+* @copyright    Tim Weippert, 2004
+* @license      GPL
+*/
+
+/**
+* Auth Class
+*
+*@package 	DNSMGR
 */
 
 class Auth {
@@ -60,6 +71,12 @@ class Auth {
 	    return false;
 	}
 }
+
+/**
+* Auth_ldap Class
+*
+*@package 	DNSMGR
+*/
 
 class Auth_ldap {
 	var $params = array();

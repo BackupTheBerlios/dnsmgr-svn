@@ -1,8 +1,20 @@
 <?
 /**
-* @package	DNSMGR
-* @author	Tim Weippert <weiti@topf-sicret.org>
+* session.php Holds Session functions for the DNSMGR
+*
+* @package      DNSMGR
+* @author       Tim Weippert <weiti@topf-sicret.org>
+* @version      dnsZone-Manager 0.1
+* @copyright    Tim Weippert, 2004
+* @license      GPL
 */
+
+/**
+* Session Class
+*
+*@package 	DNSMGR
+*/
+
 class Session {
 	
 	function initSession()
