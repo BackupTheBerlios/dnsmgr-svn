@@ -1,4 +1,10 @@
 <?php
+
+/**
+* @package	DNSMGR
+* @author	Tim Weippert <weiti@topf-sicret.org>
+*/
+
 class Auth {
 	function getAuthObject($driver, $params)
 	{

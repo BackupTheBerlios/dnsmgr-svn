@@ -1,4 +1,10 @@
 <?php
+
+/**
+* @package	DNSMGR
+* @author	Tim Weippert <weiti@topf-sicret.org>
+*/
+
 include_once FRAMEWORK_BASE . '/config/mainconfig.php';
 
 class Basic {

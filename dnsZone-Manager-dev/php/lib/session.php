@@ -1,4 +1,8 @@
 <?
+/**
+* @package	DNSMGR
+* @author	Tim Weippert <weiti@topf-sicret.org>
+*/
 class Session {
 	
 	function initSession()
