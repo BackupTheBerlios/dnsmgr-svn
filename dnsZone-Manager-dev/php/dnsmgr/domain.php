@@ -110,13 +110,13 @@ if (is_array($zone) && (count($zone) > 1)) {
   </p>
   <table >
   <tr><td>
-  <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="SOA">
+  <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="SOA">
   <table align="left" cellpadding="0" cellspacing="0" width="700" border="0">
     <tr>
       <td class="light" width="100">IN SOA</td>
       <td align="left"><input type="text" size="40" tabindex="1" name="MNAME" value="<?=$soa['MNAME']?>"> </td>
       <td class="light"><input type="text" size="40" tabindex="1" name="RNAME" value="<?=$soa['RNAME']?>"> ( </td>
-      <td class="light" style="width: 24px"><input type="image" name="SAVE_SOA" value="SaveSOA" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save SOA" title="Save SOA">
+      <td class="light" style="width: 24px"><input type="image" name="SAVE_SOA" value="SaveSOA" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save SOA" title="Save SOA"></td>
     </tr>
     <tr>
       <td class="light">&nbsp;</td>
@@ -165,11 +165,11 @@ if (is_array($zone) && (count($zone) > 1)) {
           if ( substr_count($value, '.') > 0 ) { ?>
           <tr>
             <td class="light" style="width: 50px">IN NS</td>
-            <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="NS">
+            <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="NS">
 	    		      <input type="hidden" name="OLD_NS" value="<?=$value?>">
 	                      <input type="text" size="40" tabindex="1" name="NS" value="<?=$value?>"></td>
-            <td class="light"><input type="image" name="SAVE_NS" value="Save" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save NS" title="Save Nameserver">
-	                      <input type="image" name="DELETE_NS" value="Delete" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete NS" title="Delete Nameserver">
+            <td class="light"><input type="image" name="SAVE_NS" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save NS" title="Save Nameserver">
+	                      <input type="image" name="DELETE_NS" value="Delete" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete NS" title="Delete Nameserver">
 			      </form></td>
           </tr>
    <?     }
@@ -178,13 +178,13 @@ if (is_array($zone) && (count($zone) > 1)) {
    ?>
     <tr>
       <td class="light">&nbsp;</td>
-      <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="ADD_NS">
+      <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="ADD_NS">
       			<input type="text" size="40" tabindex="1" name="NEW_NS" value=""></td>
-      <td class="light"><input type="image" name="ADD_NEW_NS" value="Add NS" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add NS" title="Add Nameserver">
+      <td class="light"><input type="image" name="ADD_NEW_NS" value="Add NS" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add NS" title="Add Nameserver">
 			</form></td>
     </tr>
   </table>
-  <table align="right" cellpadding="0" cellspacing="0"border="0">
+  <table align="right" cellpadding="0" cellspacing="0" border="0">
   <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { ?>
     <?
     // In an in-addr.arpa domain we don't need an MX and A entry
@@ -193,11 +193,11 @@ if (is_array($zone) && (count($zone) > 1)) {
           if ( substr_count($value, '.') > 0 ) { ?>
           <tr>
             <td class="light" style="width: 50px">IN MX</td>
-            <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="MX">
+            <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="MX">
 	    		      <input type="hidden" name="OLD_MX" value="<?=$value?>">
 	                      <input type="text" size="40" tabindex="1" name="MX" value="<?=$value?>"></td>
-            <td class="light"><input type="image" name="SAVE_MX" value="Save" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save MX" title="Save Mailexchange">
-	                      <input type="image" name="DELETE_MX" value="Delete" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete MX" title="Delete Mailexchange">
+            <td class="light"><input type="image" name="SAVE_MX" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save MX" title="Save Mailexchange">
+	                      <input type="image" name="DELETE_MX" value="Delete" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete MX" title="Delete Mailexchange">
 			      </form></td>
           </tr>
    <?     }
@@ -205,9 +205,9 @@ if (is_array($zone) && (count($zone) > 1)) {
       } ?>
     <tr>
       <td class="light">&nbsp;</td>
-      <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="ADD_MX">
+      <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="ADD_MX">
       			<input type="text" size="40" tabindex="1" name="NEW_MX" value=""></td>
-      <td class="light"><input type="image" name="ADD_NEW_MX" value="Add MX" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add MX" title="Add Mailexchange"></form></td>
+      <td class="light"><input type="image" name="ADD_NEW_MX" value="Add MX" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add MX" title="Add Mailexchange"></form></td>
     </tr>
   </table>
   </td></tr>
@@ -219,16 +219,21 @@ if (is_array($zone) && (count($zone) > 1)) {
       <br/><br/>
     </p>
   </td></tr>
-  <tr>
-    <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="Change_@A">
+  <tr><td>
+    <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="Change_@A">
     <table align="left" cellpadding="0" cellspacing="0"  border="0">
       <tr>
         <td class="light" style="width: 50px">IN A</td>
         <td class="light"><input type="text" size="40" tabindex="1" name="@ARecord" value="<?=$zone[0]['arecord'][0]?>"></td>
-        <td class="light"><input type="image" name="ADD_DOMAIN_A" value="Add @A" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save @ A" title="Save @ ARecord">
-	                  <input type="image" name="DELETE_DOMAIN_A" value="Delete @A" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete @ A" title="Delete @ ARecord"></td>
-     </tr>
+        <td class="light"><input type="image" name="ADD_DOMAIN_A" value="Add @A" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save @ A" title="Save @ ARecord">
+	                  <input type="image" name="DELETE_DOMAIN_A" value="Delete @A" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete @ A" title="Delete @ ARecord"></td>
+      </tr>
     </table>
+    </form>
+  </td></tr>
+  <tr><td> 
+    <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="QUICK_ADD">
+      <? include APP_BASE."/dnsmgr/quick_add_arecord.php"; ?>
     </form>
   </td></tr>
   <?}?>

@@ -28,7 +28,8 @@ if (!Auth::checkAuth()) {
 
 $APP_NAME = 'dnsmgr';
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
@@ -38,9 +39,9 @@ $APP_NAME = 'dnsmgr';
 </head>
 
 <body>
-<table align="center" border="0" width="100%" height="50" class="brightblue">
+<table align="center" border="0" width="100%" class="brightblue">
 <tr>
-  <td align="center" class="brightblue" width="100%" height="50">
+  <td align="center" class="brightblue" width="100%">
     <table border="0">
       <tr>
       <td><span class="header">dnsZone Manager</span></td>
@@ -58,8 +59,8 @@ $APP_NAME = 'dnsmgr';
         }
       }*/
       ?>
-        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem"><img src="<?echo $conf['images'];?>/emblem_web36.gif" border="0"><br>New Domain</a></p></td>
-        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/login.php?<?echo Session::getSID();?>" class="menuitem"><img src="<?echo $conf['images'];?>/stock_quit36.gif" border="0"><br>Logoff</a></p></td>
+        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem"><img src="<?echo $conf['images'];?>/emblem_web36.gif" border="0" alt="New Domain"><br>New Domain</a></p></td>
+        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/login.php?<?echo Session::getSID();?>" class="menuitem"><img src="<?echo $conf['images'];?>/stock_quit36.gif" border="0" alt="Logoff"><br>Logoff</a></p></td>
       </tr>
     </table>
   </td>
