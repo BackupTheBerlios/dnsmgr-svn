@@ -4,7 +4,7 @@ include_once FRAMEWORK_BASE . '/config/mainconfig.php';
 
 class LDAP_functions {
 
-  function my_ldap_search($search_filter, $base = '', $search_attributes = '', $scope = 'sub' , $sort_attribute = '', $bind_dn = '' , $bind_passwd = '') 
+  function my_ldap_search($search_filter, $base = '', $search_attributes = array( "*" ), $scope = 'sub' , $sort_attribute = '', $bind_dn = '' , $bind_passwd = '') 
   {
     global $conf;
     global $applications;
@@ -34,11 +34,11 @@ class LDAP_functions {
 
     if ($cc) { 
       if ( $scope == "one" ) {
-        $search = @ldap_list($cc, $base, $search_filter, array($search_attributes) );
-      } elseif ( $scop == "base" ) {
-        $search = @ldap_read($cc, $base, $search_filter, array($search_attributes) );
+        $search = @ldap_list($cc, $base, $search_filter, $search_attributes );
+      } elseif ( $scope == "base" ) {
+        $search = @ldap_read($cc, $base, $search_filter, $search_attributes );
       } else { 
-        $search = @ldap_search($cc, $base, $search_filter, array($search_attributes) );
+        $search = @ldap_search($cc, $base, $search_filter, $search_attributes );
       }
       if ( $sort_attribute ) {
         @ldap_sort($ldap ,$search, $sort_attribute);

@@ -8,7 +8,7 @@ include_once FRAMEWORK_BASE . '/lib/auth.php';
 include_once FRAMEWORK_BASE . '/lib/ldap.php';
 include_once FRAMEWORK_BASE . '/config/mainconfig.php';
 
-Session::initSession();
+//Session::initSession();
 if (Auth::checkAuth()) {
         Session::refreshSession();
 }
@@ -30,7 +30,7 @@ $menu  = new HTML_TreeMenu();
 $root = new HTML_TreeNode(array('text' => "dnsZone-Manager",
                                  'icon' => $icon));
 
-$top_level = LDAP_functions::my_ldap_search('objectclass=dcObject', '', 'dc', 'one', 'dc');
+$top_level = LDAP_functions::my_ldap_search('objectclass=dcObject', '', array( "dc" ), 'one', 'dc');
 
 if (is_array($top_level) && (count($top_level) > 1)) { 
   foreach ($top_level as $value) {
@@ -41,7 +41,7 @@ if (is_array($top_level) && (count($top_level) > 1)) {
       
       $domain_level = LDAP_functions::my_ldap_search('(& (objectclass=domain) (description=ActiveDomain*))', 
                                                      $value['dn'],
-						     '*');
+						     array( "*" ));
       if ( $conf['debug'] == 1 ) {
         print "Domain Level: ".count($domain_level)." is array? ".is_array($domain_level)."<br/>";
       }
