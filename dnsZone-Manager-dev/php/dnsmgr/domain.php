@@ -56,7 +56,7 @@ if (is_array($zone) && (count($zone) > 1)) {
       <td align="left"><input type="text" tabindex="1" name="MNAME" value="<?=$soa['MNAME']?>"></td>
     </tr>
     <tr>
-      <td class="light">RName (e-Mail)</td><td><input type="text" tabindex="1" name="RNAME" value="<?=$soa['RNAME']?>"></td>
+      <td class="light">RName (e-Mail)</td><td><input type="text" size="30" maxlength="40" tabindex="1" name="RNAME" value="<?=$soa['RNAME']?>"></td>
     </tr>
     <tr>
       <td class="light">Serial</td><td><input type="text" tabindex="1" name="SERIAL" value="<?=$soa['SERIAL']?>" readonly ></td>
