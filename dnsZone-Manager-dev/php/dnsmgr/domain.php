@@ -196,13 +196,13 @@ if (is_array($zone) && (count($zone) > 1)) {
   </td>
   <td align="right" valign="top" style="width: 50%">
   
+  <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { ?>
   <fieldset><legend>MX Records</legend>
   <p class="light" style="text-align: left;">
     The MX entries for this domain
   </p>
 
   <table align="center" cellpadding="0" cellspacing="0" border="0">
-  <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { ?>
     <?
     // In an in-addr.arpa domain we don't need an MX and A entry
       if ( is_array( $zone[0]['mxrecord'] ) ) { ?>
@@ -268,6 +268,8 @@ if (is_array($zone) && (count($zone) > 1)) {
     </fieldset>
   </td></tr>
   <?}?>
+
+  </table>
 
   </table>
 
