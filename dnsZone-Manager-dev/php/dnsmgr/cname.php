@@ -24,8 +24,10 @@ if ( $_POST['DELETE_CName'] ) {
 }
 ?>
 <span class="menuheader">CNAME Records of Domain: <?=$_GET['domain']?></span>
+
+<fieldset><legend>Existing CNAME Records</legend>
 <p class="light">
-  All CNAME Records for this Domain
+  All CNAME Records in this zone
 </p>
 
 <table width="100%">
@@ -64,11 +66,18 @@ if ( $_POST['DELETE_CName'] ) {
     ?>
   </table>
 </td><tr>
+</table>
+</fieldset>
+
 <!--
+
+<fieldset><legend>Add New CNAME Record</legend>
+<p class="light">
+  Add New CNAME Record
+</p>
+
+<table width="100%">
 <tr><td>
-  <p class="light">
-  Add New A Record
-  </p>
   <table align="left" cellpadding="0" cellspacing="0" border="0">
     <tr>
       <td class="light"><input type="text" size="20" tabindex="1" name="RDN" value=""></td>
@@ -78,5 +87,6 @@ if ( $_POST['DELETE_CName'] ) {
     </tr>
   </table>
 </td></tr>
--->
 </table>
+</fieldset>
+-->

@@ -35,8 +35,10 @@ if ( $_POST['SAVE_ARecord'] ) {
 }
 ?>
 <span class="menuheader">A Records of Domain: <?=$_GET['domain']?></span>
+
+<fieldset><legend>Existing A Records</legend>
 <p class="light">
-  All A Records for a Domain
+  All A Records in this zone
 </p>
 
 <table width="100%">
@@ -56,7 +58,7 @@ if ( $_POST['SAVE_ARecord'] ) {
           if ( $rdn['relativedomainname'][0] == '@' ) {
 	  ?>
           <tr>
-            <td class="light"><input type="text" size="20" tabindex="1" style="background-color: darkgray" name="@" value="<?=$rdn['relativedomainname'][0]?>" readonly></td>
+            <td class="light"><input type="text" size="30" tabindex="1" style="background-color: darkgray" name="@" value="<?=$rdn['relativedomainname'][0]?>" readonly></td>
 	    <td class="light" align="center" width="70">IN A</td>
 	    <td class="light"><input type="text" size="20" tabindex="1"  style="background-color: darkgray" name="@" value="<?=$rdn['arecord'][0]?>" readonly></td>
 	    <td class="light">&nbsp;</td>
@@ -66,7 +68,7 @@ if ( $_POST['SAVE_ARecord'] ) {
           ?>
           <tr>
 	     <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']."&amp;record=a"?> method="post" name="ARecords">
-            <td class="light"><input type="text" size="20" tabindex="1" name="RDN" value="<?=$rdn['relativedomainname'][0]?>"></td>
+            <td class="light"><input type="text" size="30" tabindex="1" name="RDN" value="<?=$rdn['relativedomainname'][0]?>"></td>
 	    <td class="light" align="center" width="70">IN A</td>
 	    <td class="light"><input type="text" size="20" tabindex="1" name="ARecord" value="<?=$rdn['arecord'][0]?>"></td>
 	    <td class="light"><input type="image" name="SAVE_ARecord" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save ARecord" title="Save ARecord">
@@ -81,14 +83,20 @@ if ( $_POST['SAVE_ARecord'] ) {
     ?>
   </table>
 </td><tr>
-<tr><td>
-  <p class="light">
+</table>
+</fieldset>
+
+<fieldset><legend>Add A Record</legend>
+<p class="light">
   Add New A Record
-  </p>
+</p>
+
+<table width="100%">
+<tr><td>
   <table align="left" cellpadding="0" cellspacing="0" border="0">
     <tr>
       <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']."&amp;record=a"?> method="post" name="ARecords">
-      <td class="light"><input type="text" size="20" tabindex="1" name="RDN" value=""></td>
+      <td class="light"><input type="text" size="30" tabindex="1" name="RDN" value=""></td>
       <td class="light" align="center" width="70">IN A</td>
       <td class="light"><input type="text" size="20" tabindex="1" name="ARecord" value=""></td>
       <td class="light"><input type="image" name="SAVE_ARecord" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save ARecord" title="Save ARecord"></td>
@@ -97,3 +105,4 @@ if ( $_POST['SAVE_ARecord'] ) {
   </table>
 </td></tr>
 </table>
+</fieldset>

@@ -104,16 +104,18 @@ if (is_array($zone) && (count($zone) > 1)) {
 
   // Information to Form (SOA)
 ?>
+  <table border="0" cellspacing="0" cellpadding="0" style="width: 100%">
+  <tr>
+  <td>
+  <fieldset class="front"><legend>SOA Record</legend>
   <p class="light">
     The SOA Entry of this Domain. <br>
     (Note: the serial can't be edited directly, it will be generated automatically while saving the SOA Record (at the moment)!)
   </p>
-  <table >
-  <tr><td>
   <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="SOA">
-  <table align="left" cellpadding="0" cellspacing="0" width="700" border="0">
+  <table align="left" cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
     <tr>
-      <td class="light" width="100">IN SOA</td>
+      <td class="light" style="width: 50px;">IN SOA</td>
       <td align="left"><input type="text" size="40" tabindex="1" name="MNAME" value="<?=$soa['MNAME']?>"> </td>
       <td class="light"><input type="text" size="40" tabindex="1" name="RNAME" value="<?=$soa['RNAME']?>"> ( </td>
       <td class="light" style="width: 24px"><input type="image" name="SAVE_SOA" value="SaveSOA" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save SOA" title="Save SOA"></td>
@@ -150,16 +152,19 @@ if (is_array($zone) && (count($zone) > 1)) {
     </tr>
   </table>
   </form>
+  </fieldset>
   </td></tr>
   <tr><td>
-    <p class="light">
-      <br/><br/>
-      The NS and MX Entries of this Domain.
-      <br/><br/>
-    </p>
-  </td></tr>
-  <tr><td>
-  <table align="left" cellpadding="0" cellspacing="0"  border="0">
+
+  <table align="center" cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
+  <tr>
+  <td align="left" valign="top" style="width: 50%">
+
+  <fieldset><legend>NS Records</legend>
+  <p class="light" style="text-align: left;">
+    The NS entries for this domain
+  </p>
+  <table align="center" cellpadding="0" cellspacing="0"  border="0">
    <? if ( is_array( $zone[0]['nsrecord'] ) ) { ?>
      <? foreach ( $zone[0]['nsrecord'] as $value ) { 
           if ( substr_count($value, '.') > 0 ) { ?>
@@ -167,8 +172,9 @@ if (is_array($zone) && (count($zone) > 1)) {
             <td class="light" style="width: 50px">IN NS</td>
             <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="NS">
 	    		      <input type="hidden" name="OLD_NS" value="<?=$value?>">
-	                      <input type="text" size="40" tabindex="1" name="NS" value="<?=$value?>"></td>
-            <td class="light"><input type="image" name="SAVE_NS" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save NS" title="Save Nameserver">
+	                      <input type="text" style="width: 200px" tabindex="1" name="NS" value="<?=$value?>"></td>
+            <td class="light" style="width: 55px">
+			      <input type="image" name="SAVE_NS" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save NS" title="Save Nameserver">
 	                      <input type="image" name="DELETE_NS" value="Delete" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete NS" title="Delete Nameserver">
 			      </form></td>
           </tr>
@@ -177,14 +183,25 @@ if (is_array($zone) && (count($zone) > 1)) {
       }
    ?>
     <tr>
-      <td class="light">&nbsp;</td>
+      <td class="light" style="width: 50px">&nbsp;</td>
       <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="ADD_NS">
-      			<input type="text" size="40" tabindex="1" name="NEW_NS" value=""></td>
-      <td class="light"><input type="image" name="ADD_NEW_NS" value="Add NS" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add NS" title="Add Nameserver">
+      			<input type="text" style="width: 200px" tabindex="1" name="NEW_NS" value=""></td>
+      <td class="light" style="width: 55px" align="left">
+			<input type="image" name="ADD_NEW_NS" value="Add NS" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add NS" title="Add Nameserver">
 			</form></td>
     </tr>
   </table>
-  <table align="right" cellpadding="0" cellspacing="0" border="0">
+  </fieldset>
+  
+  </td>
+  <td align="right" valign="top" style="width: 50%">
+  
+  <fieldset><legend>MX Records</legend>
+  <p class="light" style="text-align: left;">
+    The MX entries for this domain
+  </p>
+
+  <table align="center" cellpadding="0" cellspacing="0" border="0">
   <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { ?>
     <?
     // In an in-addr.arpa domain we don't need an MX and A entry
@@ -195,8 +212,9 @@ if (is_array($zone) && (count($zone) > 1)) {
             <td class="light" style="width: 50px">IN MX</td>
             <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="MX">
 	    		      <input type="hidden" name="OLD_MX" value="<?=$value?>">
-	                      <input type="text" size="40" tabindex="1" name="MX" value="<?=$value?>"></td>
-            <td class="light"><input type="image" name="SAVE_MX" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save MX" title="Save Mailexchange">
+	                      <input type="text" style="width: 200px" tabindex="1" name="MX" value="<?=$value?>"></td>
+            <td class="light" style="width: 55px">
+			      <input type="image" name="SAVE_MX" value="Save" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save MX" title="Save Mailexchange">
 	                      <input type="image" name="DELETE_MX" value="Delete" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete MX" title="Delete Mailexchange">
 			      </form></td>
           </tr>
@@ -204,22 +222,29 @@ if (is_array($zone) && (count($zone) > 1)) {
         }
       } ?>
     <tr>
-      <td class="light">&nbsp;</td>
+      <td class="light" style="width: 50px">&nbsp;</td>
       <td class="light"><form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="ADD_MX">
-      			<input type="text" size="40" tabindex="1" name="NEW_MX" value=""></td>
-      <td class="light"><input type="image" name="ADD_NEW_MX" value="Add MX" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add MX" title="Add Mailexchange"></form></td>
+      			<input type="text" style="width: 200px" tabindex="1" name="NEW_MX" value=""></td>
+      <td class="light" style="width: 55px" align="left">
+			<input type="image" name="ADD_NEW_MX" value="Add MX" style="border-style: none;" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add MX" title="Add Mailexchange">
+			</form></td>
     </tr>
   </table>
+  </fieldset>
+
+  </td>
+  </tr>
+  </table>
+
   </td></tr>
   <tr><td>
+  <fieldset><legend>Domain A Record</legend>
     <p class="light">
-      <br/><br/>
       This is an "special" ARecord for the Domain itself.<br/>
       (For example to use http://<?=$_GET['domain']?> in your browser)
-      <br/><br/>
     </p>
-  </td></tr>
-  <tr><td>
+    <table border="0" cellspacing="0" cellpadding="0" style="width: 100%;">
+    <tr><td>
     <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="Change_@A">
     <table align="left" cellpadding="0" cellspacing="0"  border="0">
       <tr>
@@ -230,11 +255,17 @@ if (is_array($zone) && (count($zone) > 1)) {
       </tr>
     </table>
     </form>
+    </td>
+    </tr>
+    </table>
+    </fieldset>
   </td></tr>
-  <tr><td> 
+  <tr><td>
+    <fieldset><legend>Quickadd host A Record</legend>
     <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&amp;domain=".$_GET['domain']?> method="post" name="QUICK_ADD">
       <? include APP_BASE."/dnsmgr/quick_add_arecord.php"; ?>
     </form>
+    </fieldset>
   </td></tr>
   <?}?>
 

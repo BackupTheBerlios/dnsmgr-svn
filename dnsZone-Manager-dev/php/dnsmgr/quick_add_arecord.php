@@ -41,7 +41,6 @@ if ( $_POST['SAVE_QUICK_ADD'] ) {
 }
 ?>
 
-<br/><br/>
 <p class="light">
 Quick Add A Records for this Domain.
 </p>
