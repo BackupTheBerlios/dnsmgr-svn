@@ -1,0 +1,9 @@
+This Project tries to generate plain text Zonefiles from an LDAP Server with Entries associated with
+the dnsZone-Schema from "http://www.venaas.no/ldap/bind-sdb/". With this you can use the LDAP based
+DNS Management without the need to patch your bind9 with the bind-sdb patch.
+
+Well, some Features from bind-sdb may be not useable with this method, but who knows :)
+
+Written by Tim Weippert <weiti@topf-sicret.org>
+Copyright: GNU Public License (GPL)
+

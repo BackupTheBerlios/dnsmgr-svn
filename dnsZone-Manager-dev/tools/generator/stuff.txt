@@ -1,0 +1,9 @@
+Get ActiveDomains:
+ldapsearch -LLL -x -h hebus -b ou=DNS,o=topf-sicret,c=org '(& (objectclass=domain) (description=ActiveDomain*))' associatedDomain
+ldapsearch -LLL -x -h hebus -b ou=DNS,o=topf-sicret,c=org '(& (objectclass=domain) (description=ActiveDomain*))' associatedDomain | grep associatedDomain | awk '{ print $2}'
+
+Get Zone Information:
+
+ldapsearch -LLL -x -h hebus -b ou=DNS,o=topf-sicret,c=org '(zoneName=topf-sicret.de)'
+ldapsearch -LLL -x -h hebus -b ou=DNS,o=topf-sicret,c=org '(& (relativeDomainName=@) (zoneName=topf-sicret.de))'
+
