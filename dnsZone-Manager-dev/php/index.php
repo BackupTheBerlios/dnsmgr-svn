@@ -38,13 +38,26 @@ $APP_NAME = 'dnsmgr';
 	<script language="javascript" type="text/javascript" src="<?echo $conf['baseurl']?>/scripts/TreeMenu.js"></script>
 </head>
 
-<body>
-<table align="center" border="0" width="100%" class="brightblue">
+<body style="padding: 0px; margin: 0px;">
+<table class="topbar">
 <tr>
-  <td align="center" class="brightblue" width="100%">
-    <table border="0">
-      <tr>
-      <td><span class="header">dnsZone Manager</span></td>
+  <td align="left" valign="top" style="width: 300px;">
+    <span class="header">dnsZone Manager</span><br>
+    <span style="color: #FFFFFF">Version 0.1</span>
+  <td align="center" valign="center"> <!-- menubar -->
+    <div class="buttons">
+      <a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem">
+      <div class="button"><img src="<?echo $conf['images'];?>/emblem_web36.gif" border="0" alt="New Domain"><br>New Domain</a>
+    </div>
+  </td>
+  <td align="right" style="width: 200px"> <!-- logout -->
+    <div class="buttons">
+      <a href="<?echo $conf['baseurl'];?>/login.php?<?echo Session::getSID();?>" class="menuitem">
+      <img src="<?echo $conf['images'];?>/stock_quit36.gif" border="0" alt="Logoff"><br>Logoff</a>
+    </div>
+  </td>
+</tr>
+</table>
       <?
       /*foreach (array_keys($appmenu[$APP_NAME]) as $submenu) {
       
@@ -59,14 +72,15 @@ $APP_NAME = 'dnsmgr';
         }
       }*/
       ?>
-        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem"><img src="<?echo $conf['images'];?>/emblem_web36.gif" border="0" alt="New Domain"><br>New Domain</a></p></td>
+<!--        <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/dnsmgr/domain-new.php?<?echo Session::getSID();?>" target="_NEW" class="menuitem"><img src="<?echo $conf['images'];?>/emblem_web36.gif" border="0" alt="New Domain"><br>New Domain</a></p></td>
         <td align="center"><p class="light"><a href="<?echo $conf['baseurl'];?>/login.php?<?echo Session::getSID();?>" class="menuitem"><img src="<?echo $conf['images'];?>/stock_quit36.gif" border="0" alt="Logoff"><br>Logoff</a></p></td>
       </tr>
     </table>
   </td>
 </tr>
-</table>
-<br/><br/> 
+</table
+-->
+<br/>
   
 <?
 // If an action is set, look for an php File with the action name and include
@@ -81,5 +95,13 @@ $APP_NAME = 'dnsmgr';
   include APP_BASE."/dnsmgr/doit.php";
 ?>
 
+<br>
+
+<table class="bottombar">
+<tr>
+  <td align="left">&copy; 2004, Tim Weippert</td>
+  <td align="right"><a href="license.php" class="bottommenuitem">License</a> <a href="credits.php" class="bottommenuitem">Credits</a></td>
+</tr>
+</table>
 </body>
 </html>
