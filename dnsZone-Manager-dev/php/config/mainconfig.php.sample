@@ -1,0 +1,52 @@
+<?php
+
+/***************************************************************
+ * General Tool Config
+ **************************************************************/
+// Debugging anschalten => 0 = aus, 1 = an!
+$conf['debug'] = 0;
+
+$conf['vdir'] = '/~weiti/dnsZone-Manager';
+$conf['fsbase'] = '/home/weiti/public_html/dnsZone-Manager';
+
+$conf['baseurl'] = 'http://localhost'.$conf['vdir'];
+$conf['images'] = $conf['vdir'].'/style/images';
+$conf['applications'] = $conf['fsbase'];
+$conf['appuri'] = $conf['baseurl'];
+$conf['language'] = 'de_DE';
+$conf['session_name'] = 'dnsmgr';
+$conf['cache_limiter'] = 'nocache';
+$conf['session_timeout'] = 3600;
+$conf['session_maxlifetime'] = 3600;
+$conf['session.save_path'] = '/tmp/';
+$conf['session.sditransfer'] = 'url';
+
+// Authentification Settings
+$conf['auth']['type'] = 'ldap';
+$conf['auth']['params']['host'] = 'localhost';
+$conf['auth']['params']['port'] = '389';
+$conf['auth']['params']['basedn'] = '<LDAP_BASE>';
+$conf['auth']['params']['uid'] = 'uid';
+$conf['auth']['params']['cn'] = 'cn';
+$conf['auth']['params']['logfile'] = '/tmp/dnsmgr.log';
+
+/***************************************************************
+ * Applications 
+ **************************************************************/
+
+$applications['dnsmgr'] = array(
+    'appname' => 'dnsZone-Manager',
+    'appbase' => $conf['vdir'].'/dnsmgr',
+    'appfsbase' => $conf['fsbase'].'/dnsmgr',
+    'applogfile' => '/tmp/dnsmgr.log',
+    'entrypoint' => 'index',
+    'icon' => '/images/computer_icon_24.gif',
+    'allow_guests' => true,
+    'allow_only_admins' => false, 
+    'status' => 'active', 
+    'Backend_Type' => 'ldap', 
+    'Backend_Host' => 'localhost', 
+    'Backend_Base' => 'dc=domains,<LDAP_BASE>',
+    'Backend_Bind_DN' => 'cn=dnsadmin,dc=domains,<LDAP_BASE>', 
+    'Backend_Bind_DN_Passwd' => 'dns'
+);
