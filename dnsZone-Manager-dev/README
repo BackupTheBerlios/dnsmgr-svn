@@ -1,0 +1,26 @@
+dnsZone-Manager
+
+Table of Content
+=================
+
+1. What is dnsZone-Manager
+2. Contact
+
+1. What is dnsZone-Manager
+-------------------------
+
+dnsZone-Manager is an Project which is 
+divided into two major pieces:
+
+First, the Web Interface (GUI)
+Second, several Tools to generate Config and other Files 
+needed for DNS Management.
+
+2. Contact
+----------
+
+Information on dnsZone-Manager on the Web:
+
+	http://dnsmgr.berlios.de/
+
+Author: Tim Weippert <weiti@topf-sicret.org>
