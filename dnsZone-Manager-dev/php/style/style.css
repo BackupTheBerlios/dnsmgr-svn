@@ -15,6 +15,39 @@ form {
 	margin:0px;
 } 
 
+table.topbar {
+  border-bottom: 2px #FFFFFF dotted; 
+  width: 100%; 
+  margin: 0px; 
+  padding: 5px;
+  background-color: #034187;
+  color: #FFFFFF;
+}
+
+table.bottombar {
+  border-top: 2px #FFFFFF dotted;
+  width: 100%;
+  margin: 0px;
+  padding: 5px;
+  color: #FFFFFF;
+  font-size: 10px;
+}
+
+div.buttons {
+  background-color: #013069;
+  border: 1px #9DACCF solid;
+  color: #FFFFFF;;
+  width: 100px;
+  align: center;
+  text-align: center;
+}
+
+div.buttons:hover {
+  border: 1px #FFFFFF solid;
+  background-color: #9DACCF;
+  width: 100px;
+}
+
 .ovbgtabelle {
 	font-size:14px;
 	color:#ffffff;
@@ -89,11 +122,29 @@ a:hover {
 	text-decoration:underline;
 } 
 
+a.bottommenuitem {
+        color: #FFFFFF;
+        font-family:Verdana,Helvetica,sans-serif;
+        font-size: 10px;
+        font-weight :normal;
+        text-decoration: none;
+}
+
+a.bottommenuitem:hover {
+        color:#eeeeff;
+        font-family:Verdana,Helvetica,sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+	text-decoration: underline;
+
+}
+
 a.menuitem {
-	color:#eeeeff;
+	color: #eeeeff;
 	font-family:Verdana,Helvetica,sans-serif;
-	font-size:12px;
-	font-weight:normal;
+	font-size: 12px;
+	font-weight :normal;
+	text-decoration: none;
 } 
 
 a.menuitem:hover {
@@ -101,7 +152,6 @@ a.menuitem:hover {
 	font-family:Verdana,Helvetica,sans-serif;
 	font-size:12px;
 	font-weight:normal;
-	text-decoration:underline;
 }
 
 a.submenuitem {
@@ -146,16 +196,32 @@ a.submenuwhite:hover {
 }
 
 .treeMenuDefault {
-	font-family:Verdana,Helvetica,sans-serif;
-	font-size:12px;
-	font-weight:normal;
-	color:#9DACCF;
+	font-family: Verdana,Helvetica,sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #9DACCF;
 }
 
 .treeMenuBold {
-	font-family:Verdana,Helvetica,sans-serif;
-	font-size:12px;
-	font-weight:bold;
-	color:#9DACCF;
+	font-family: Verdana,Helvetica,sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #9DACCF;
 }
 
+/* Fieldsets in general */
+fieldset {
+  border: 2px dotted #034187;
+  margin-left:   5px;
+  margin-right:  5px;
+  margin-top:	 10px;
+  padding:       10px;
+}
+
+fieldset legend {
+  color: #9DACCF;
+  background: #013069;
+  padding: 2px 5px 2px 5px;
+  border: 2px solid #034187;
+  font-weight: bold;
+}
