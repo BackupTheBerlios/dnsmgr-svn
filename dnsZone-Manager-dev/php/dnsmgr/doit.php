@@ -52,9 +52,31 @@ if (is_array($top_level) && (count($top_level) > 1)) {
 	    if ( $conf['debug'] == 1 ) {
               print "Domain found: ".$domain['associateddomain'][0]." DN: ".$domain['dn']." Level: ".$level[$level_count]."<br>";
 	    }
-            $level[$level_count]->addItem( new HTML_TreeNode(array('text' => $domain['associateddomain'][0],
-	                                                           'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$domain['associateddomain'][0],
+            $dom = &$level[$level_count]->addItem( new HTML_TreeNode(array('text' => $domain['associateddomain'][0],
+	                                                           'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".
+								             $domain['associateddomain'][0],
       					                           'icon' => 'emblem_web16.gif')));
+	    if ( strpos($domain['associateddomain'][0], 'in-addr.arpa') == false ) {
+	      // It is not an IN-ADDR.ARPA Domain
+	      $dom->addItem(new HTML_TreeNode(array('text' => 'A Records',
+                                                    'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".
+      					                    $domain['associateddomain'][0]."&amp;record=a",
+      					            'icon' => '')));
+	      $dom->addItem(new HTML_TreeNode(array('text' => 'CNAME Records',
+                                                    'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".
+      					                    $domain['associateddomain'][0]."&amp;record=cname",
+      					            'icon' => '')));
+	      $dom->addItem(new HTML_TreeNode(array('text' => 'Additional MX Records',
+                                                    'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".
+      					                    $domain['associateddomain'][0]."&amp;record=mx",
+      					            'icon' => '')));
+	    } else {
+	      //It is an IN-ADDR.ARPA Domain
+	      $dom->addItem(new HTML_TreeNode(array('text' => 'PTR Records',
+                                                    'link' => $conf['baseurl']."/index.php?".Session::getSID()."&domain=".
+      					                    $domain['associateddomain'][0]."&amp;record=ptr",
+      					            'icon' => '')));
+	    }
 	  }
 	}
       }
@@ -89,8 +111,10 @@ if (is_array($top_level) && (count($top_level) > 1)) {
   <td align="left" valign="top">
 <!--    <div>-->
       <? 
-      if ( $_GET['domain'] ) {
-        include APP_BASE."/dnsmgr/domain.php";
+      if ( $_GET['record'] ) {
+        include APP_BASE."/dnsmgr/".$_GET['record'].".php";
+      } else if ( $_GET['domain'] ) {
+	include APP_BASE."/dnsmgr/domain.php";
       } 
       ?> 
 <!--    </div>-->
