@@ -3,6 +3,7 @@ define('FRAMEWORK_BASE', dirname(__FILE__));
 include_once FRAMEWORK_BASE . '/lib/basic.php';
 include_once FRAMEWORK_BASE . '/lib/session.php';
 include_once FRAMEWORK_BASE . '/lib/auth.php';
+include_once FRAMEWORK_BASE . '/config/mainconfig.php';
 
 Session::initSession();
 if (Auth::checkAuth()) {
