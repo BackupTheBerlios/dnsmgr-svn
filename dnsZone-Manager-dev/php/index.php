@@ -100,7 +100,10 @@ $APP_NAME = 'dnsmgr';
 <table class="bottombar">
 <tr>
   <td align="left">&copy; 2004, Tim Weippert</td>
-  <td align="right"><a href="license.php" class="bottommenuitem">License</a> <a href="credits.php" class="bottommenuitem">Credits</a></td>
+  <td align="right">	<a href="license.php" class="bottommenuitem">License</a> | 
+	  		<a href="license.php" class="bottommenuitem">Dokumentation</a> |
+			<a href="credits.php" class="bottommenuitem">Credits</a>
+   </td>
 </tr>
 </table>
 </body>
