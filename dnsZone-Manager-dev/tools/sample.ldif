@@ -1,0 +1,384 @@
+version: 1
+
+#
+# LDAPv3
+# base <<YOUR BASE>> with scope sub
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+dn: <YOUR BASE>
+objectClass: organizationalUnit
+ou: DNS
+
+dn: dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dcObject
+objectClass: organizationalUnit
+ou: de
+dc: de
+
+dn: dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dcObject
+objectClass: organizationalUnit
+dc: in-addr.arpa
+ou: in-addr.arpa
+
+dn: dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dcObject
+objectClass: domain
+objectClass: domainRelatedObject
+dc: topf-sicret
+description: ActiveDomain
+associatedDomain: topf-sicret.de
+
+dn: dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dcObject
+objectClass: domain
+objectClass: domainRelatedObject
+dc: 42.21.172
+description: ActiveDomain
+associatedDomain: 42.21.172.in-addr.arpa
+
+dn: relativeDomainName=@,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: @
+nSRecord: hebus.topf-sicret.de.
+nSRecord: cian.topf-sicret.de.
+mXRecord: 10 cian.topf-sicret.de.
+mXRecord: 20 hebus.topf-sicret.de.
+dNSTTL: 86400
+dNSClass: IN
+sOARecord: localhost. root.localhost. 2004072000 86400 86400 2419200 86400
+
+dn: relativeDomainName=hebus,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: hebus
+aRecord: 172.21.42.2
+dNSClass: IN
+
+dn: relativeDomainName=hebus-CNAMEs,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: cups
+relativeDomainName: hyla
+relativeDomainName: intranet
+relativeDomainName: ldap
+relativeDomainName: mail
+relativeDomainName: ntp2
+relativeDomainName: rainmaker
+relativeDomainName: svn
+relativeDomainName: hebus-CNAMEs
+cNAMERecord: hebus.topf-sicret.de.
+dNSClass: IN
+
+dn: relativeDomainName=cian,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: cian
+aRecord: 172.21.42.3
+dNSClass: IN
+
+dn: relativeDomainName=cixi,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: cixi
+aRecord: 172.21.42.1
+dNSClass: IN
+
+dn: relativeDomainName=cian-CNAMEs,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: cian-CNAMEs
+relativeDomainName: ntp1
+dNSClass: IN
+cNAMERecord: cian.topf-sicret.de.
+
+dn: relativeDomainName=cisco,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: cisco
+dNSClass: IN
+aRecord: 172.21.42.4
+
+dn: relativeDomainName=dhcp-1,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: dhcp-1
+dNSClass: IN
+aRecord: 172.21.42.25
+
+dn: relativeDomainName=dhcp-2,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: dhcp-2
+dNSClass: IN
+aRecord: 172.21.42.26
+
+dn: relativeDomainName=dhcp-3,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: dhcp-3
+dNSClass: IN
+aRecord: 172.21.42.27
+
+dn: relativeDomainName=dhcp-4,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: dhcp-4
+dNSClass: IN
+aRecord: 172.21.42.28
+
+dn: relativeDomainName=dhcp-5,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: dhcp-5
+dNSClass: IN
+aRecord: 172.21.42.29
+
+dn: relativeDomainName=dhcp-6,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: dhcp-6
+dNSClass: IN
+aRecord: 172.21.42.30
+
+dn: relativeDomainName=lanfeust,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: lanfeust
+dNSClass: IN
+aRecord: 172.21.42.10
+mXRecord: 10 lanfeust.topf-sicret.de.
+mXRecord: 20 hebus.topf-sicret.de.
+
+dn: relativeDomainName=thanos,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: thanos
+dNSClass: IN
+aRecord: 172.21.42.19
+
+dn: relativeDomainName=airport,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: airport
+dNSClass: IN
+aRecord: 172.21.42.20
+
+dn: relativeDomainName=wg602-1,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: wg602-1
+dNSClass: IN
+aRecord: 172.21.42.21
+
+dn: relativeDomainName=wg602-2,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: wg602-2
+dNSClass: IN
+aRecord: 172.21.42.22
+
+dn: relativeDomainName=pbkg4,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: pbkg4
+dNSClass: IN
+aRecord: 172.21.42.12
+
+dn: relativeDomainName=pbkg4-CNAMEs,dc=topf-sicret,dc=de,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.de
+relativeDomainName: pbkg4-CNAMEs
+relativeDomainName: pbkg4-wlan
+relativeDomainName: pbkg4-eth
+dNSClass: IN
+cNAMERecord: pbkg4.topf-sicret.de.
+
+dn: relativeDomainName=@,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: @
+dNSTTL: 86400
+dNSClass: IN
+nSRecord: hebus.topf-sicret.de
+nSRecord: cian.topf-sicret.de
+sOARecord: localhost. root.localhost. 2004071900 86400 86400 2419200 86400
+
+dn: relativeDomainName=1,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 1
+dNSClass: IN
+pTRRecord: cixi.topf-sicret.de.
+
+dn: relativeDomainName=2,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 2
+dNSClass: IN
+pTRRecord: hebus.topf-sicret.de.
+
+dn: relativeDomainName=3,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 3
+dNSClass: IN
+pTRRecord: cian.topf-sicret.de.
+
+dn: relativeDomainName=4,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 4
+dNSClass: IN
+pTRRecord: cisco.topf-sicret.de.
+
+dn: relativeDomainName=10,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 10
+dNSClass: IN
+pTRRecord: lanfeust.topf-sicret.de.
+
+dn: relativeDomainName=12,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 12
+dNSClass: IN
+pTRRecord: pbkg4.topf-sicret.de.
+
+dn: relativeDomainName=20,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 20
+dNSClass: IN
+pTRRecord: airport.topf-sicret.de.
+
+dn: relativeDomainName=21,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 21
+dNSClass: IN
+pTRRecord: wg602-1.topf-sicret.de.
+
+dn: relativeDomainName=22,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 22
+dNSClass: IN
+pTRRecord: wg602-2.topf-sicret.de.
+
+dn: relativeDomainName=25,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 25
+dNSClass: IN
+pTRRecord: dhcp-1.topf-sicret.de.
+
+dn: relativeDomainName=26,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 26
+dNSClass: IN
+pTRRecord: dhcp-2.topf-sicret.de.
+
+dn: relativeDomainName=27,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 27
+dNSClass: IN
+pTRRecord: dhcp-3.topf-sicret.de.
+
+dn: relativeDomainName=28,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 28
+dNSClass: IN
+pTRRecord: dhcp-4.topf-sicret.de.
+
+dn: relativeDomainName=29,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 29
+dNSClass: IN
+pTRRecord: dhcp-5.topf-sicret.de.
+
+dn: relativeDomainName=30,dc=42.21.172,dc=in-addr.arpa,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: 42.21.172.in-addr.arpa
+relativeDomainName: 30
+dNSClass: IN
+pTRRecord: dhcp-6.topf-sicret.de.
+
+dn: dc=org,<YOUR BASE>
+objectClass: top
+objectClass: dcObject
+objectClass: organizationalUnit
+dc: org
+ou: org Top Level Domains
+
+dn: dc=topf-sicret,dc=org,<YOUR BASE>
+objectClass: top
+objectClass: dcObject
+objectClass: domain
+objectClass: domainRelatedObject
+dc: topf-sicret
+associatedDomain: topf-sicret.org
+description: ActiveDomain
+
+dn: relativeDomainName=@,dc=topf-sicret,dc=org,<YOUR BASE>
+objectClass: top
+objectClass: dNSZone
+zoneName: topf-sicret.org
+relativeDomainName: @
+dNSTTL: 86400
+dNSClass: IN
+sOARecord: ns19.schlund.de. hostmaster.schlund.de. 2002091905 28800 7200 60480
+ 0 86400
+
+# search result
+
+# numResponses: 52
+# numEntries: 51

@@ -9,7 +9,7 @@ $conf['debug'] = 0;
 $conf['vdir'] = '/~weiti/dnsZone-Manager';
 $conf['fsbase'] = '/home/weiti/public_html/dnsZone-Manager';
 
-$conf['baseurl'] = 'http://localhost'.$conf['vdir'];
+$conf['baseurl'] = 'http://intranet.topf-sicret.de'.$conf['vdir'];
 $conf['images'] = $conf['vdir'].'/style/images';
 $conf['applications'] = $conf['fsbase'];
 $conf['appuri'] = $conf['baseurl'];
@@ -25,7 +25,7 @@ $conf['session.sditransfer'] = 'url';
 $conf['auth']['type'] = 'ldap';
 $conf['auth']['params']['host'] = 'localhost';
 $conf['auth']['params']['port'] = '389';
-$conf['auth']['params']['basedn'] = 'dc=kk,dc=enbw,dc=com';
+$conf['auth']['params']['basedn'] = 'c=org';
 $conf['auth']['params']['uid'] = 'uid';
 $conf['auth']['params']['cn'] = 'cn';
 $conf['auth']['params']['logfile'] = '/tmp/dnsmgr.log';
@@ -46,9 +46,9 @@ $applications['dnsmgr'] = array(
     'status' => 'active', 
     'Backend_Type' => 'ldap', 
     'Backend_Host' => 'localhost', 
-    'Backend_Base' => 'dc=domains,dc=kk,dc=enbw,dc=com',
-    'Backend_Bind_DN' => 'cn=dnsadmin,dc=domains,dc=kk,dc=enbw,dc=com', 
-    'Backend_Bind_DN_Passwd' => 'dns'
+    'Backend_Base' => 'ou=DNS,o=topf-sicret,c=org',
+    'Backend_Bind_DN' => 'cn=admin,c=org', 
+    'Backend_Bind_DN_Passwd' => 'admin'
 );
 
 /***************************************************************
