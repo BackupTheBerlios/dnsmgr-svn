@@ -74,6 +74,15 @@ if ( $_POST['DELETE_MX'] ) {
   LDAP_functions::modify_attribute($_POST['MX'], $dn, 'del', 'mXRecord');
 }
 
+// Add an Domain ARrcord
+if ( $_POST['ADD_DOMAIN_A'] ) {
+  LDAP_functions::modify_attribute($_POST['@ARecord'], $dn, 'replace', 'ARecord');
+}
+// Remove an Domain ARecord
+if ( $_POST['DELETE_DOMAIN_A'] ) {
+  LDAP_functions::modify_attribute($_POST['@ARecord'], $dn, 'del', 'ARecord');
+}
+
 $dn = "";
 ?>
 
@@ -175,8 +184,6 @@ if (is_array($zone) && (count($zone) > 1)) {
 			</form></td>
     </tr>
   </table>
-  <!--</td></tr>
-  <tr><td>-->
   <table align="right" cellpadding="0" cellspacing="0"border="0">
   <? if ( strpos($_GET['domain'], 'in-addr.arpa') == false ) { ?>
     <?
@@ -203,21 +210,29 @@ if (is_array($zone) && (count($zone) > 1)) {
       <td class="light"><input type="image" name="ADD_NEW_MX" value="Add MX" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_add.gif" alt="Add MX" title="Add Mailexchange"></form></td>
     </tr>
   </table>
-
-  <? if ( $zone[0]['arecord'][0] ) { ?>
-          <tr>
-            <td class="light">&nbsp;</td>
-            <td class="light">&nbsp;</td>
-            <td class="light">&nbsp;</td>
-          </tr>
-          <tr>
-            <td class="light">IN A</td>
-            <td class="light"><input type="text" size="40" tabindex="1" name="@ARecord" value="<?=$zone[0]['arecord'][0]?>"></td>
-            <td class="light">&nbsp;</td>
-          </tr>
-  <?} ?>
-  <?}?>
   </td></tr>
+  <tr><td>
+    <p class="light">
+      <br/><br/>
+      This is an "special" ARecord for the Domain itself.<br/>
+      (For example to use http://<?=$_GET['domain']?> in your browser)
+      <br/><br/>
+    </p>
+  </td></tr>
+  <tr>
+    <form action=<? echo $conf['baseurl']."/index.php?".Session::getSID()."&domain=".$_GET['domain']?> method="post" name="Change_@A">
+    <table align="left" cellpadding="0" cellspacing="0"  border="0">
+      <tr>
+        <td class="light" style="width: 50px">IN A</td>
+        <td class="light"><input type="text" size="40" tabindex="1" name="@ARecord" value="<?=$zone[0]['arecord'][0]?>"></td>
+        <td class="light"><input type="image" name="ADD_DOMAIN_A" value="Add @A" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_ok.gif" alt="Save @ A" title="Save @ ARecord">
+	                  <input type="image" name="DELETE_DOMAIN_A" value="Delete @A" style="border-style: none;" border="0" src="<?=$conf['baseurl']?>/style/images/stock_remove.gif" alt="Delete @ A" title="Delete @ ARecord"></td>
+     </tr>
+    </table>
+    </form>
+  </td></tr>
+  <?}?>
+
   </table>
 
 <?
