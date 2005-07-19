@@ -175,6 +175,19 @@ class LDAP_functions {
     return 1;
   }
   
+ /**
+  * Add New A Record (LDAP ADD)
+  *
+  * This function adds an complete new LDAP Entry with an given arecord
+  *
+  * @access 	public
+  * @param 	string 	Domainname
+  * @param	string	Domain Distinguish Name
+  * @param	string	Entry Name
+  * @param	string	Value of the A Record Field (IP Address)
+  * @return 	true|false
+  */
+  
   function add_rdn_arecord($domain, $domain_dn, $entry, $value) {
     global $conf;
     global $applications;

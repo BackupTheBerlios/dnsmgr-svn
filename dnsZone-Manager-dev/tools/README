@@ -3,4 +3,5 @@ Tools:
 dnsZone.schema 	- Used OpenLDAP Schema
 sample.ldif 	- Sample LDIF to show the Used Tree
 generator 	- DNS Zonefile Generator (generates plain ascii Bind 8/9 Files)
+import		- DNS Zonefile Import from Bind8/9 into DNSMGR LDAP Tree
 

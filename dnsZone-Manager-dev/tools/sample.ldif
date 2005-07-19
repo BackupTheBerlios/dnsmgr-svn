@@ -9,7 +9,7 @@ version: 1
 
 dn: <YOUR BASE>
 objectClass: organizationalUnit
-ou: DNS
+ou: <OU OF YOUR BASE>
 
 dn: dc=de,<YOUR BASE>
 objectClass: top
